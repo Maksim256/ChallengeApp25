@@ -2,3 +2,4 @@
 
 DateTime date = DateTime.Now;
 Console.WriteLine("Hello, Andrzej " +date.DayOfWeek );
+Console.WriteLine("Hello, Andrzej " + date.ToString("dd-MMMM-yyyy"));
