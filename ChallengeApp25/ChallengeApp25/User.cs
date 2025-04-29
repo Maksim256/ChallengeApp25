@@ -55,6 +55,7 @@ namespace ChallengeApp25
         public void AddScore(int number)
         {
             this.score.Add(number);
+            
         }
     }
 }
