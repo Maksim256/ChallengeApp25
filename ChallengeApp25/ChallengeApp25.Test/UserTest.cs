@@ -25,20 +25,21 @@ namespace ChallengeApp25.Test
         {
             //arrange
             var user = new User("Adam", "haslo1");
-            user.AddScore(5);
-            user.AddScore(6);
-            
+            user.AddScore(8);
+            user.AddScore(7);
+            user.OdejmijPunkty(1);
+
             //act
 
             var result = user.Result;
             
             //assert
-            Assert.AreEqual(11, result);
+            Assert.AreEqual(14, result);
 
         }
 
         [Test]
-        public void WhenCollectTwoSetOfPoint_ShouldCorrecrResultForEmployee()
+        public void WhenCollectTwoSetOfPoint_ShouldCorrecResultForEmployee()
         {
             //arrange
             var employee = new Employee("Adam2", "haslo2", 40);
@@ -48,7 +49,7 @@ namespace ChallengeApp25.Test
             //act
             var result = employee.Punkty;
             //assert
-            Assert.AreEqual(10, result);
+            Assert.AreEqual(9, result);
         }
 
 

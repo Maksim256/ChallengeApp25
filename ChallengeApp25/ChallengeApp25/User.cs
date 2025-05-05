@@ -57,5 +57,9 @@ namespace ChallengeApp25
             this.score.Add(number);
             
         }
+        public void OdejmijPunkty(int number)
+        {
+            this.score.Add(-number);
+        }
     }
 }
