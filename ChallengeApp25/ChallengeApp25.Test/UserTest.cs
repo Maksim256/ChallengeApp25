@@ -27,6 +27,7 @@ namespace ChallengeApp25.Test
             var user = new User("Adam", "haslo1");
             user.AddScore(5);
             user.AddScore(6);
+            
             //act
 
             var result = user.Result;
@@ -34,6 +35,20 @@ namespace ChallengeApp25.Test
             //assert
             Assert.AreEqual(11, result);
 
+        }
+
+        [Test]
+        public void WhenCollectTwoSetOfPoint_ShouldCorrecrResultForEmployee()
+        {
+            //arrange
+            var employee = new Employee("Adam2", "haslo2", 40);
+            employee.DodajPunkty(4);
+            employee.DodajPunkty(6);
+            employee.OdejmijPunkty(1);
+            //act
+            var result = employee.Punkty;
+            //assert
+            Assert.AreEqual(10, result);
         }
 
 

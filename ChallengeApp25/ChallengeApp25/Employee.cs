@@ -58,6 +58,10 @@ namespace ChallengeApp25
             
             this.punkty.Add(punkty);
         }
+        public void OdejmijPunkty(int punkty)
+        {
+            this.punkty.Add(-punkty);
+        }
 
     }
 }
