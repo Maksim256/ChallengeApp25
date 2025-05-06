@@ -52,7 +52,8 @@ namespace ChallengeApp25.Test
             Assert.AreEqual(9, result);
         }
 
+        // testy do referencji i typów wartoœciowych
 
-
+        
     }
 }
