@@ -8,60 +8,41 @@ namespace ChallengeApp25
 {
     public class Employee
     {
-        private string imie { get; set; }
-        private string nazwisko { get; set; }
-        private int wiek { get; set; }
+        private List<float> grades = new List<float>();
 
-        private List<int> punkty = new List<int>();
-        public Employee()
+
+        public Employee(string name, string surname )
         {
-            this.imie = "-";
-            this.nazwisko = "-";
-            this.wiek = 0;
+            this.Name = name;
+            this.Surname = surname;
         }
-        public Employee(string imie, string nazwisko, int wiek )
+
+
+
+        private string Name { get;  set; } //private
+        private string Surname { get;  set; } //private
+        
+        public void AddGrade(float grade)
         {
-            this.imie = imie;
-            this.nazwisko = nazwisko;
-            this.wiek = wiek;
+            this.grades.Add(grade);
         }
-        public Employee(string imie)
+
+        public Statistics GetStatistics()
         {
-            this.imie = imie;
+            var statistics = new Statistics();
+            statistics.Average = 0;
             
-        }
-        public string Imie
-        {
-            get { return this.imie; }
-            set { this.imie = value; }
-        }
-        public string Nazwisko
-        {
-            get { return this.nazwisko; }
-            set { this.nazwisko = value; }
-        }
-        public int Wiek
-        {
-            get { return this.wiek; }
-            set { this.wiek = value; }
-        }
-
-        public int Punkty
-        {
-            get
+            statistics.Min = float.MaxValue;
+            statistics.Max = float.MinValue;
+            
+            foreach (var grade in this.grades)
             {
-                return this.punkty.Sum();
+                statistics.Min = Math.Min(statistics.Min, grade);
+                statistics.Max = Math.Max(statistics.Max, grade);
+                statistics.Average += grade;
             }
+            statistics.Average /= this.grades.Count;
+            return statistics;
         }
-        public void DodajPunkty(int punkty)
-        {
-            
-            this.punkty.Add(punkty);
-        }
-        public void OdejmijPunkty(int punkty)
-        {
-            this.punkty.Add(-punkty);
-        }
-
     }
 }

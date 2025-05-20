@@ -19,24 +19,28 @@ namespace ChallengeApp25.Test
 
             int number1 = 2;
             int number2 = 2;
+            float number3 = 2.0f    ;
+            float number4 = 2.0f;
+
             //act
 
 
             //assert
             Assert.AreEqual(number1, number2);
+         //   Assert.AreEqual(number3, number4);
 
         }   
 
             [Test]
             public void GetUserShoildReturnDifferentName()
             {
-                var user1 = GetUser("Adam");
-                var user2 = GetUser("Adam");
+                var user1 = GetUser("Adam", "Adamski");
+                var user2 = GetUser("Adam" , "Adam2");
                 Assert.AreNotEqual(user1, user2);
             }
         
 
-        private User GetUser(string login)
+        private User GetUser(string login,string surname)
         {
             return new User(login);
         }

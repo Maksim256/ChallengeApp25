@@ -42,14 +42,13 @@ namespace ChallengeApp25.Test
         public void WhenCollectTwoSetOfPoint_ShouldCorrecResultForEmployee()
         {
             //arrange
-            var employee = new Employee("Adam2", "haslo2", 40);
-            employee.DodajPunkty(4);
-            employee.DodajPunkty(6);
-            employee.OdejmijPunkty(1);
+            var employee = new Employee("Adam2", "haslo2");
+            employee.AddGrade(8);
+            employee.AddGrade(1);
             //act
-            var result = employee.Punkty;
+            var result = employee.GetStatistics;
             //assert
-            Assert.AreEqual(9, result);
+            Assert.AreEqual(9,result);
         }
 
         // testy do referencji i typów wartoœciowych
