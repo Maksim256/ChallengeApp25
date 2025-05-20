@@ -27,7 +27,7 @@ namespace ChallengeApp25.Test
 
             //assert
             Assert.AreEqual(number1, number2);
-         //   Assert.AreEqual(number3, number4);
+            Assert.AreEqual(number3, number4);
 
         }   
 
