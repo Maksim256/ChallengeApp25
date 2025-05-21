@@ -19,15 +19,15 @@ namespace ChallengeApp25
 
 
 
-        private string Name { get;  set; } //private
-        private string Surname { get;  set; } //private
+        public string Name { get; private set; } //private
+        public string Surname { get; private set; } //private
         
         public void AddGrade(float grade)
         {
             this.grades.Add(grade);
         }
 
-        public Statistics GetStatistics()
+        public Statistics GetStatistics()  //Statistics to model danych w klasie statistics
         {
             var statistics = new Statistics();
             statistics.Average = 0;
