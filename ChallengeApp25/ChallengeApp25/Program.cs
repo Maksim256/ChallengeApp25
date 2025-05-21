@@ -6,6 +6,6 @@ employee.AddGrade(3);
 employee.AddGrade(4);
 var statistics = employee.GetStatistics();
 
-Console.WriteLine($"Max: {statistics.Max}");
+Console.WriteLine($"Max: {statistics.Max}"); 
 
 
