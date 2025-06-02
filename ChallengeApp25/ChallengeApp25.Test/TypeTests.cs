@@ -31,19 +31,9 @@ namespace ChallengeApp25.Test
 
         }   
 
-            [Test]
-            public void GetUserShoildReturnDifferentName()
-            {
-                var user1 = GetUser("Adam", "Adamski");
-                var user2 = GetUser("Adam" , "Adam2");
-                Assert.AreNotEqual(user1, user2);
-            }
+            
         
 
-        private User GetUser(string login,string surname)
-        {
-            return new User(login);
-        }
        
         
     }

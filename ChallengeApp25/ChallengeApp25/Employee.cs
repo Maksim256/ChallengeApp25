@@ -21,10 +21,41 @@ namespace ChallengeApp25
 
         public string Name { get; private set; } //private
         public string Surname { get; private set; } //private
-        
+
         public void AddGrade(float grade)
         {
+            if (grade >= 0 && grade <=100)  // validation for grades
+            { 
             this.grades.Add(grade);
+            }
+            else
+            {
+                Console.WriteLine("Invalid grade. Please enter a value between 0 and 100.");
+            }
+        }
+
+        public void AddGrade(string grade)
+        {
+            if(float.TryParse(grade, out float result)) //parsing string to float
+            {                 
+                this.AddGrade(result);
+            }
+            else
+            {
+                Console.WriteLine("Invalid grade format. Please enter a valid number.");
+            }
+                     
+        }
+
+        public void AddGrade(int grade)
+        {
+            float gradeAsInt = (float)grade;
+            this.AddGrade(gradeAsInt); //converting int to float and adding grade
+        }
+        public void AddGrade(double grade)
+        {
+            float gradeAsFloat = (float)grade;
+            this.AddGrade(gradeAsFloat); //converting double to float and adding grade
         }
 
         public Statistics GetStatistics()  //Statistics to model danych w klasie statistics

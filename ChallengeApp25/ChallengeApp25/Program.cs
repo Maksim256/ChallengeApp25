@@ -2,9 +2,12 @@
 using ChallengeApp25;
 
 var employee = new Employee("Adam", "Nowak");
-employee.AddGrade(3);
+employee.AddGrade("Tom");
+employee.AddGrade(2000);
 employee.AddGrade(4);
-employee.AddGrade(3);
+employee.AddGrade("3");
+    
+
 var statistics = employee.GetStatistics();
 
 Console.WriteLine($"Max: {statistics.Max} Min: {statistics.Min} Average: {statistics.Average:N2}"); 
