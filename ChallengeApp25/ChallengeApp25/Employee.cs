@@ -24,7 +24,9 @@ namespace ChallengeApp25
 
         public void AddGrade(float grade)
         {
-            if (grade >= 0 && grade <=100)  // validation for grades
+
+            
+            if (grade >= 0 && grade <= 100)  // validation for grades
             { 
             this.grades.Add(grade);
             }
@@ -42,9 +44,8 @@ namespace ChallengeApp25
             }
             else
             {
-                Console.WriteLine("Invalid grade format. Please enter a valid number.");
-            }
-                     
+                Console.WriteLine("Invalid grade format. String is not float.");
+            }        
         }
 
         public void AddGrade(int grade)

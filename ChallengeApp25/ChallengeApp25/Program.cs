@@ -3,9 +3,10 @@ using ChallengeApp25;
 
 var employee = new Employee("Adam", "Nowak");
 employee.AddGrade("Tom");
-employee.AddGrade(2000);
+employee.AddGrade("2");
 employee.AddGrade(4);
 employee.AddGrade("3");
+
     
 
 var statistics = employee.GetStatistics();

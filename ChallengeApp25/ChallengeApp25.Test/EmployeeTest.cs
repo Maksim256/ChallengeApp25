@@ -49,8 +49,10 @@ namespace ChallengeApp25.Test
             employee.AddGrade(2);
             employee.AddGrade(6);
             employee.AddGrade(3);
+
             // Act
             var statistics = employee.GetStatistics();
+
             // Assert
             Assert.AreEqual(Math.Round (1.5,2),Math.Round (statistics.Min,2 ));
             Assert.AreEqual(6, statistics.Max);
