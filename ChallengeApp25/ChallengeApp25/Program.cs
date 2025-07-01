@@ -11,6 +11,11 @@ employee.AddGrade("3");
 
 var statistics = employee.GetStatistics();
 
+var statistics1 = employee.GetStatisticsWithForEach();
+var statistics2 = employee.GetStatisticsWithFor();
+var statistics3 = employee.GetStatisticsWithDoWhile();
+var statistics4 = employee.GetStatisticsWithWhile();
+
 Console.WriteLine($"Max: {statistics.Max} Min: {statistics.Min} Average: {statistics.Average:N2}"); 
 SetSth(out statistics);
 
