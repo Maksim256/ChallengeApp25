@@ -16,7 +16,12 @@ var statistics2 = employee.GetStatisticsWithFor();
 var statistics3 = employee.GetStatisticsWithDoWhile();
 var statistics4 = employee.GetStatisticsWithWhile();
 
-Console.WriteLine($"Max: {statistics.Max} Min: {statistics.Min} Average: {statistics.Average:N2}"); 
+Console.WriteLine($"Max: {statistics.Max} Min: {statistics.Min} Average: {statistics.Average:N2}");
+Console.WriteLine($"Max1: {statistics1.Max} Min: {statistics1.Min} Average: {statistics1.Average:N2}");
+Console.WriteLine($"Max2: {statistics2.Max} Min: {statistics2.Min} Average: {statistics2.Average:N2}");
+Console.WriteLine($"Max3: {statistics3.Max} Min: {statistics3.Min} Average: {statistics3.Average:N2}");
+Console.WriteLine($"Max4: {statistics4.Max} Min: {statistics4.Min} Average: {statistics4.Average:N2}");
+
 SetSth(out statistics);
 
 void SetSth(out Statistics statistics)
