@@ -19,7 +19,10 @@ namespace ChallengeApp25
             this.Surname = surname;
         }
 
+        public Employee()
+        {
 
+        }
 
         public string Name { get; private set; } //private
         public string Surname { get; private set; } //private
@@ -50,6 +53,38 @@ namespace ChallengeApp25
             }        
         }
 
+        public void addGrade(char grade)
+        {
+            
+            switch(grade)
+            {
+                case 'A':
+                    case 'a': //case insensitive
+                    this.grades.Add(100);
+                    break;
+                case 'B':
+                    case 'b': //case insensitive
+                    this.grades.Add(80);
+                    break;
+                case 'C':
+                    case 'c': //case insensitive
+                    this.grades.Add(60);
+                    break;
+                case 'D':
+                    case 'd': //case insensitive
+
+                    this.grades.Add(40);
+                    break;
+                case 'E':
+                    case 'e': //case insensitive
+                    this.grades.Add(20);
+                    break;
+                default:
+                    Console.WriteLine("Invalid grade. Please enter a valid character grade (A, B, C, D, E).");
+                    break;
+            }
+            
+        }
         public void AddGrade(int grade)
         {
             float gradeAsInt = (float)grade;
@@ -83,9 +118,28 @@ namespace ChallengeApp25
                 }
             }
 
-          
+
             statistics.Average /= this.grades.Count;
-            return statistics;
+
+               switch (statistics.Average)
+            {
+                case var average when average >= 80:
+                    statistics.AverageLetter = 'A';
+                    break;
+                case var average when average >= 60:
+                    statistics.AverageLetter = 'B';
+                    break;
+                case var average when average >= 40:
+                    statistics.AverageLetter = 'C';
+                    break;
+                case var average when average >= 20:
+                    statistics.AverageLetter = 'D';
+                    break;
+                case var average when average >= 50:
+                    statistics.AverageLetter = 'E';
+                    break;
+            }
+                    return statistics;
         }
     }
 }
