@@ -13,7 +13,22 @@ Console.WriteLine("Witamy w progamie do oceny pracowników");
 Console.WriteLine("==========================================");
 
 var employee = new Employee();
-while (true)
+
+try
+{
+    Employee emp = null;
+    var name = emp.Surname;
+}
+catch (Exception exception)
+{
+    Console.WriteLine(exception.Message);
+}
+
+finally
+{
+    Console.WriteLine("Finnally here");
+}
+    while (true)
 
 {
     Console.WriteLine("podaj kolejna ocene pracownika");
@@ -24,7 +39,17 @@ while (true)
     {
         break;
     }
-    employee.AddGrade(input);
+    try
+    {
+        employee.AddGrade(input);
+    }
+    catch (Exception exception )
+    {
+        Console.WriteLine($"Exception catched: {exception.Message}");
+       // continue; // Skip to the next iteration if an exception occurs
+    }
+
+    
 
 }
 

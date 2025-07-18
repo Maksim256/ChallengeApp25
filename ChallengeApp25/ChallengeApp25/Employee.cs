@@ -10,6 +10,8 @@ namespace ChallengeApp25
 {
     public class Employee
     {
+       // private readonly char sex = 'M'; //przykład readonly
+        const int supervalue = 'K'; //przykład const
         private List<float> grades = new List<float>();
 
 
@@ -17,6 +19,7 @@ namespace ChallengeApp25
         {
             this.Name = name;
             this.Surname = surname;
+            //this.sex = 'K';
         }
 
         public Employee()
@@ -32,12 +35,14 @@ namespace ChallengeApp25
 
             
             if (grade >= 0 && grade <= 100)  // validation for grades
-            { 
+            {
+                
             this.grades.Add(grade);
             }
             else
             {
-                Console.WriteLine("Invalid grade. Please enter a value between 0 and 100.");
+                throw new Exception("invalid grade value");
+                //Console.WriteLine("Invalid grade. Please enter a value between 0 and 100.");
             }
         }
 
@@ -49,7 +54,8 @@ namespace ChallengeApp25
             }
             else
             {
-                Console.WriteLine("Invalid grade format. String is not float.");
+                throw new Exception("String is not float.");
+                //Console.WriteLine("Invalid grade format. String is not float.");
             }        
         }
 
@@ -58,30 +64,31 @@ namespace ChallengeApp25
             
             switch(grade)
             {
-                case 'A':
-                    case 'a': //case insensitive
+                case 'A': 
+                    
                     this.grades.Add(100);
                     break;
                 case 'B':
-                    case 'b': //case insensitive
+                    
                     this.grades.Add(80);
                     break;
                 case 'C':
-                    case 'c': //case insensitive
+                    
                     this.grades.Add(60);
                     break;
                 case 'D':
-                    case 'd': //case insensitive
+                    
 
                     this.grades.Add(40);
                     break;
                 case 'E':
-                    case 'e': //case insensitive
+                    
                     this.grades.Add(20);
                     break;
                 default:
-                    Console.WriteLine("Invalid grade. Please enter a valid character grade (A, B, C, D, E).");
-                    break;
+                    throw new Exception ("Invalid grade value");
+                    
+                    
             }
             
         }

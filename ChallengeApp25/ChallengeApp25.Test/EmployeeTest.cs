@@ -59,5 +59,26 @@ namespace ChallengeApp25.Test
             Assert.AreEqual(3.125, statistics.Average ); // Allowing a small margin of error for floating point comparison    
 
         }
+
+        [Test]
+        public void Dodanaocenaliterowasiezgadzazwartosciaami()
+        {
+            //arrange
+            var employee = new Employee("Jan", "Kowalski");
+            employee.AddGrade('a');
+            employee.AddGrade('b');
+
+            //act
+            var statistics = employee.GetStatistics();
+
+
+            //Assert
+
+            Assert.AreEqual(100, statistics.Max);
+            Assert.AreEqual(80, statistics.Min);
+            Assert.AreEqual(75, statistics.Average);
+
+
+        }
     }
 }
