@@ -11,7 +11,7 @@ namespace ChallengeApp25
     public class Employee
     {
        // private readonly char sex = 'M'; //przykład readonly
-        const int supervalue = 'K'; //przykład const
+        const int supervalue = 'K'; //przykład const np dla stałych warości
         private List<float> grades = new List<float>();
 
 
@@ -86,7 +86,7 @@ namespace ChallengeApp25
                     this.grades.Add(20);
                     break;
                 default:
-                    throw new Exception ("Invalid grade value");
+                    throw new Exception ("Wrong letter");
                     
                     
             }
