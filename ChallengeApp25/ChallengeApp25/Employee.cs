@@ -8,26 +8,19 @@ using System.Threading.Tasks;
 
 namespace ChallengeApp25
 {
-    public class Employee
+    public class Employee : IEmployee
     {
-       // private readonly char sex = 'M'; //przykład readonly
-        const int supervalue = 'K'; //przykład const np dla stałych warości
+       
         private List<float> grades = new List<float>();
 
-
-        public Employee(string name, string surname )
+        public Employee(string name, string surname) //konstruktor
         {
-            this.Name = name;
+           this.Name = name;
             this.Surname = surname;
-            //this.sex = 'K';
         }
 
-        public Employee()
-        {
 
-        }
-
-        public string Name { get; private set; } //private
+        public string Name { get; private set; }
         public string Surname { get; private set; } //private
 
         public void AddGrade(float grade)
@@ -46,7 +39,7 @@ namespace ChallengeApp25
             }
         }
 
-        public void AddGrade(string grade)
+        public void addgrade(string grade)
         {
             if(float.TryParse(grade, out float result)) //parsing string to float
             {                 
@@ -54,35 +47,36 @@ namespace ChallengeApp25
             }
             else
             {
-                throw new Exception("String is not float.");
-                //Console.WriteLine("Invalid grade format. String is not float.");
+                throw new Exception("string is not float.");
+                //console.writeline("invalid grade format. string is not float.");
             }        
         }
+       
 
-        public void addGrade(char grade)
+        public void AddGrade(char grade)
         {
             
             switch(grade)
             {
-                case 'A': 
-                    
+                case 'A':
+                case 'a':   
                     this.grades.Add(100);
                     break;
                 case 'B':
-                    
+                case 'b':   
                     this.grades.Add(80);
                     break;
                 case 'C':
-                    
+                case 'c':   
                     this.grades.Add(60);
                     break;
                 case 'D':
-                    
+                case 'd':  
 
                     this.grades.Add(40);
                     break;
                 case 'E':
-                    
+                case 'e':  
                     this.grades.Add(20);
                     break;
                 default:
@@ -103,7 +97,10 @@ namespace ChallengeApp25
             this.AddGrade(gradeAsFloat); //converting double to float and adding grade
         }
 
-       
+        public void AddGrade(string grade)
+        {
+            throw new NotImplementedException();
+        }
 
         public Statistics GetStatistics()  //Statistics to model danych w klasie statistics
         {

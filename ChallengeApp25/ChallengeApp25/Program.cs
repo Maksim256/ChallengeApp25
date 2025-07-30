@@ -12,7 +12,7 @@ using ChallengeApp25;
 Console.WriteLine("Witamy w progamie do oceny pracowników");
 Console.WriteLine("==========================================");
 
-var employee = new Employee();
+var employee = new Employee("Jakub", "KowALSKI");
 
 try
 {
