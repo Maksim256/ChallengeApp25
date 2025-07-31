@@ -1,36 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ChallengeApp25
 {
-    public class Employee : IEmployee
+    public class EmployeeInMemory : EmployeeBase
     {
-       
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname) //konstruktor
+        public EmployeeInMemory(string name, string surname)
+            : base(name, surname)
         {
-           this.Name = name;
-            this.Surname = surname;
+
         }
 
+       
 
-        public string Name { get; private set; }
-        public string Surname { get; private set; } //private
-
-        public void AddGrade(float grade)
+        public override void AddGrade(float grade)
         {
-
-            
             if (grade >= 0 && grade <= 100)  // validation for grades
             {
-                
-            this.grades.Add(grade);
+
+                this.grades.Add(grade);
             }
             else
             {
@@ -39,70 +32,64 @@ namespace ChallengeApp25
             }
         }
 
-        public void addgrade(string grade)
+        public override void AddGrade(double grade)
         {
-            if(float.TryParse(grade, out float result)) //parsing string to float
-            {                 
+            float gradeAsFloat = (float)grade;
+            this.AddGrade(gradeAsFloat); //converting double to float and adding grade
+        }
+
+        public override void AddGrade(int grade)
+        {
+            float gradeAsInt = (float)grade;
+            this.AddGrade(gradeAsInt); //converting int to float and adding grade
+        }
+
+        public override void AddGrade(char grade)
+        {
+            switch (grade)
+            {
+                case 'A':
+                case 'a':
+                    this.grades.Add(100);
+                    break;
+                case 'B':
+                case 'b':
+                    this.grades.Add(80);
+                    break;
+                case 'C':
+                case 'c':
+                    this.grades.Add(60);
+                    break;
+                case 'D':
+                case 'd':
+
+                    this.grades.Add(40);
+                    break;
+                case 'E':
+                case 'e':
+                    this.grades.Add(20);
+                    break;
+                default:
+                    throw new Exception("Wrong letter");
+
+
+            }
+        }
+
+        public override void AddGrade(string grade)
+        {
+            if (float.TryParse(grade, out float result)) //parsing string to float
+            {
                 this.AddGrade(result);
             }
             else
             {
                 throw new Exception("string is not float.");
                 //console.writeline("invalid grade format. string is not float.");
-            }        
-        }
-       
-
-        public void AddGrade(char grade)
-        {
-            
-            switch(grade)
-            {
-                case 'A':
-                case 'a':   
-                    this.grades.Add(100);
-                    break;
-                case 'B':
-                case 'b':   
-                    this.grades.Add(80);
-                    break;
-                case 'C':
-                case 'c':   
-                    this.grades.Add(60);
-                    break;
-                case 'D':
-                case 'd':  
-
-                    this.grades.Add(40);
-                    break;
-                case 'E':
-                case 'e':  
-                    this.grades.Add(20);
-                    break;
-                default:
-                    throw new Exception ("Wrong letter");
-                    
-                    
             }
-            
-        }
-        public void AddGrade(int grade)
-        {
-            float gradeAsInt = (float)grade;
-            this.AddGrade(gradeAsInt); //converting int to float and adding grade
-        }
-        public void AddGrade(double grade)
-        {
-            float gradeAsFloat = (float)grade;
-            this.AddGrade(gradeAsFloat); //converting double to float and adding grade
         }
 
-        public void AddGrade(string grade)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Statistics GetStatistics()  //Statistics to model danych w klasie statistics
+        public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
             statistics.Average = 0;
@@ -125,7 +112,7 @@ namespace ChallengeApp25
 
             statistics.Average /= this.grades.Count;
 
-               switch (statistics.Average)
+            switch (statistics.Average)
             {
                 case var average when average >= 80:
                     statistics.AverageLetter = 'A';
@@ -143,7 +130,7 @@ namespace ChallengeApp25
                     statistics.AverageLetter = 'E';
                     break;
             }
-                    return statistics;
+            return statistics;
         }
     }
 }
