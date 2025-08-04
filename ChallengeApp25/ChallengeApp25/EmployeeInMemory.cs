@@ -8,15 +8,17 @@ namespace ChallengeApp25
 {
     public class EmployeeInMemory : EmployeeBase
     {
+        public delegate void GradeAddedDelegate(object sender, EventArgs args);
+        
+        public event GradeAddedDelegate GradeAdded;
+
         private List<float> grades = new List<float>();
 
         public EmployeeInMemory(string name, string surname)
             : base(name, surname)
-        {
+       {
 
         }
-
-       
 
         public override void AddGrade(float grade)
         {
@@ -24,6 +26,18 @@ namespace ChallengeApp25
             {
 
                 this.grades.Add(grade);
+
+                if ((GradeAdded!= null))
+                { 
+                    GradeAdded(this, new EventArgs()); //event to notify that grade was added
+                }
+                else
+                {
+                    Console.WriteLine("No subscribers for GradeAdded event.");
+                }
+                
+                    
+                
             }
             else
             {

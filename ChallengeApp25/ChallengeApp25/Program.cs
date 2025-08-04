@@ -12,48 +12,57 @@ using ChallengeApp25;
 Console.WriteLine("Witamy w progamie do oceny pracowników");
 Console.WriteLine("==========================================");
 
-var employee = new EmployeeInFile("Jakub", "KowALSKI");
+//var employee = new EmployeeInFile("Jakub", "KowALSKI");
+var employee = new EmployeeInMemory("Jan", "Nowak");
+
+employee.GradeAdded += EmpoloyeeGradeAdded; //podpiecie subskrybcji eventu
+
+void EmpoloyeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("New grade added");
+}
+
 employee.AddGrade(0.5f);
 
-//employee.SayHello();
-//try
-//{
-//    EmployeeInMemory emp = null;
-//    var name = emp.Surname;
-//}
-//catch (Exception exception)
-//{
-//    Console.WriteLine(exception.Message);
-//}
 
-//finally
-//{
-//    Console.WriteLine("Finnally here");
-//}
-//    while (true)
+try
+{
+    EmployeeInMemory emp = null;
+    var name = emp.Surname;
+}
+catch (Exception exception)
+{
+    Console.WriteLine(exception.Message);
+}
 
-//{
-//    Console.WriteLine("podaj kolejna ocene pracownika");
-//    var input = Console.ReadLine();
+finally
+{
+    Console.WriteLine("Finnally here");
+}
+while (true)
 
-
-//    if (input == "q" || input == "Q")
-//    {
-//        break;
-//    }
-//    try
-//    {
-//        employee.AddGrade(input);
-//    }
-//    catch (Exception exception )
-//    {
-//        Console.WriteLine($"Exception catched: {exception.Message}");
-//       // continue; // Skip to the next iteration if an exception occurs
-//    }
+{
+    Console.WriteLine("podaj kolejna ocene pracownika");
+    var input = Console.ReadLine();
 
 
+    if (input == "q" || input == "Q")
+    {
+        break;
+    }
+    try
+    {
+        employee.AddGrade(input);
+    }
+    catch (Exception exception)
+    {
+        Console.WriteLine($"Exception catched: {exception.Message}");
+        // continue; // Skip to the next iteration if an exception occurs
+    }
 
-//}
+
+
+}
 
 
 var statistics = employee.GetStatistics();
