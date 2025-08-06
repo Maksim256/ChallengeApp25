@@ -4,6 +4,8 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using static ChallengeApp25.EmployeeBase;
+using static ChallengeApp25.EmployeeInMemory;
 
 namespace ChallengeApp25
 {
@@ -19,6 +21,7 @@ namespace ChallengeApp25
         void AddGrade(char grade); // metoda dodajaca ocene w formie char      
      void AddGrade(string grade); // metoda dodajaca ocene w formie string (nie jest wymagana, ale moze byc przydatna)
 
+       event GradeAddedDelegate GradeAdded; // event, ktory bedzie wywolywany po dodaniu oceny
 
         Statistics GetStatistics(); // metoda zwracajaca statystyki
     }

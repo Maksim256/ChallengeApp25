@@ -11,6 +11,8 @@ namespace ChallengeApp25
 
         private const string fileName = "grades.txt";
 
+        public override event GradeAddedDelegate GradeAdded;
+
         public EmployeeInFile(string name, string surname)
             : base(name, surname)
         {
@@ -21,6 +23,14 @@ namespace ChallengeApp25
             using (var writer = File.AppendText(fileName))
             {
                 writer.WriteLine(grade);
+            }
+            if (GradeAdded != null)
+            {
+                GradeAdded(this, new EventArgs()); //event to notify that grade was added
+            }
+            else
+            {
+                throw new Exception("invalid grade value");
             }
         }
         public override void AddGrade(double grade)
@@ -39,29 +49,29 @@ namespace ChallengeApp25
         {
             switch (grade)
             {
-                //case 'A':
-                //case 'a':
-                //    this.grades.Add(100);
-                //    break;
-                //case 'B':
-                //case 'b':
-                //    this.grades.Add(80);
-                //    break;
-                //case 'C':
-                //case 'c':
-                //    this.grades.Add(60);
-                //    break;
-                //case 'D':
-                //case 'd':
+                case 'A':
+                case 'a':
+                    this.AddGrade(100);
+                    break;
+                case 'B':
+                case 'b':
+                   this.AddGrade(80);
+                    break;
+                case 'C':
+                case 'c':
+                    this.AddGrade(60);
+                    break;
+                case 'D':
+                case 'd':
 
-                //    this.grades.Add(40);
-                //    break;
-                //case 'E':
-                //case 'e':
-                //    this.grades.Add(20);
-                //    break;
-                //default:
-                //    throw new Exception("Wrong letter");
+                    this.AddGrade(40);
+                    break;
+                case 'E':
+                case 'e':
+                    this.AddGrade(20);
+                    break;
+                default:
+                    throw new Exception("Wrong letter");
 
 
             }
@@ -76,7 +86,7 @@ namespace ChallengeApp25
             else
             {
                 throw new Exception("string is not float.");
-                //console.writeline("invalid grade format. string is not float.");
+                
             }
         }
 
@@ -89,10 +99,10 @@ namespace ChallengeApp25
            
         private List<float> ReadGradesFromFile()
         { 
-            var grades = new List<float>(); 
-            if (File.Exists(fileName))
+            var grades = new List<float>();
+            if (File.Exists($"{fileName}"))
             {
-                using (var reader = File.OpenText(fileName)) //using otwiera i zamyka plik automatycznie
+                using (var reader = File.OpenText($"{fileName}")) //using otwiera i zamyka plik automatycznie
                 {
                     var line = reader.ReadLine();
                     while (line != null)
@@ -118,7 +128,6 @@ namespace ChallengeApp25
             {
                 if (grade <= 0)
                 {
-                    
                     statistics.Max = Math.Max(statistics.Max, grade);
                     statistics.Min = Math.Min(statistics.Min, grade);
                     statistics.Average += grade;

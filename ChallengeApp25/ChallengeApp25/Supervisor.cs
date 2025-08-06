@@ -12,6 +12,8 @@ namespace ChallengeApp25
         public string Name => "Adam";
         public string Surname => "Kowalski";
 
+        public event EmployeeBase.GradeAddedDelegate GradeAdded;
+
         public void AddGrade(float grade)
         {
             throw new NotImplementedException();
