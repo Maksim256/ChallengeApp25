@@ -19,14 +19,10 @@ namespace ChallengeApp25
             this.Surname = surname;
 
         }
-
-        
-
-        
+  
 
         public string Surname { get; private set; }
-
-       
+            
 
         public string Name { get; private set; }
 

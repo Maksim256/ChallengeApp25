@@ -26,3 +26,4 @@ namespace ChallengeApp25
         Statistics GetStatistics(); // metoda zwracajaca statystyki
     }
 }
+// Interfejs IEmployee definiuje metody i właściwości, które muszą być zaimplementowane przez klasy implementujące ten interfejs.

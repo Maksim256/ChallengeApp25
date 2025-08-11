@@ -22,7 +22,7 @@ void EmpoloyeeGradeAdded(object sender, EventArgs args)
     Console.WriteLine("New grade added");
 }
 
-employee.AddGrade(0.5f);
+//employee.AddGrade(0.5f);
 
 
 try

@@ -19,10 +19,11 @@ namespace ChallengeApp25
 
         public EmployeeInMemory(string name, string surname)
             : base(name, surname)   
-        {
+        {   // Constructor for EmployeeInMemory class, initializing name and surname
+            // by calling the base class constructor.
 
         }
-      
+
 
         public override void AddGrade(float grade)
         {
@@ -110,45 +111,13 @@ namespace ChallengeApp25
         public override Statistics GetStatistics()
         {
             var statistics = new Statistics();
-            statistics.Average = 0;
-            statistics.Min = float.MaxValue;
-            statistics.Max = float.MinValue;
-
-            foreach (var grade in this.grades)
+            
+              foreach (var grade in this.grades)
             {
-                if (grade > 0)
-                {
-
-
-
-                    statistics.Min = Math.Min(statistics.Min, grade);
-                    statistics.Max = Math.Max(statistics.Max, grade);
-                    statistics.Average += grade;
-                }
+                statistics.AddGrade(grade); //adding grades to statistics
             }
 
-
-            statistics.Average /= this.grades.Count;
-
-            switch (statistics.Average)
-            {
-                case var average when average >= 80:
-                    statistics.AverageLetter = 'A';
-                    break;
-                case var average when average >= 60:
-                    statistics.AverageLetter = 'B';
-                    break;
-                case var average when average >= 40:
-                    statistics.AverageLetter = 'C';
-                    break;
-                case var average when average >= 20:
-                    statistics.AverageLetter = 'D';
-                    break;
-                case var average when average >= 50:
-                    statistics.AverageLetter = 'E';
-                    break;
-            }
-            return statistics;
+                return statistics;
         }
     }
 }
