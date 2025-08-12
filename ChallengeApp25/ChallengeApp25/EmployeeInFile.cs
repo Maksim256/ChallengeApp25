@@ -4,164 +4,116 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//namespace ChallengeApp25
-//{
-//    public class EmployeeInFile : EmployeeBase
-//    {
+namespace ChallengeApp25
+{
+    public class EmployeeInFile : EmployeeBase
+    {
 
-//        private const string fileName = "grades.txt";
+        private const string fileName = "grades.txt";
 
-//        public override event GradeAddedDelegate GradeAdded;
+        public override event GradeAddedDelegate GradeAdded;
 
-//        public EmployeeInFile(string name, string surname)
-//            : base(name, surname)
-//        {
+        public EmployeeInFile(string name, string surname)
+            : base(name, surname)
+        {
 
-//        }
+        }
 
-//        public override void AddGrade(float grade)
-//        {
-//            if (grade >= 0 && grade <= 100) // validation for grades
-//            {
+        public override void AddGrade(float grade)
+        {
+            if (grade >= 0 && grade <= 100) // validation for grades
+            {
 
-//                using (var writer = File.AppendText(fileName))
-//                {
-//                    writer.WriteLine(grade);
-//                }
-//                if (GradeAdded != null)
-//                {
-//                    GradeAdded(this, new EventArgs()); //event to notify that grade was added
-//                }
-//            }
-//            else
-//            {
-//                throw new Exception("invalid grade value");
-//            }
-//        }
+                using (var writer = File.AppendText(fileName))
+                {
+                    writer.WriteLine(grade);
+                }
+                if (GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs()); //event to notify that grade was added
+                }
+            }
+            else
+            {
+                throw new Exception("invalid grade value");
+            }
+        }
 
-//        public override void AddGrade(double grade)
-//        {
-//            float gradeAsFloat = (float)grade;
-//            this.AddGrade(gradeAsFloat);
-//        }
+        public override void AddGrade(double grade)
+        {
+            float gradeAsFloat = (float)grade;
+            this.AddGrade(gradeAsFloat);
+        }
 
-//        public override void AddGrade(int grade)
-//        {
-//            float gradeAsInt = (float)grade;
-//            this.AddGrade(gradeAsInt);
-//        }
+        public override void AddGrade(int grade)
+        {
+            float gradeAsInt = (float)grade;
+            this.AddGrade(gradeAsInt);
+        }
 
-//        public override void AddGrade(char grade)
-//        {
-//            switch (grade)
-//            {
-//                case 'A':
-//                case 'a':
-//                    this.AddGrade(100);
-//                    break;
-//                case 'B':
-//                case 'b':
-//                   this.AddGrade(80);
-//                    break;
-//                case 'C':
-//                case 'c':
-//                    this.AddGrade(60);
-//                    break;
-//                case 'D':
-//                case 'd':
+        public override void AddGrade(char grade)
+        {
+            
+        }
 
-//                    this.AddGrade(40);
-//                    break;
-//                case 'E':
-//                case 'e':
-//                    this.AddGrade(20);
-//                    break;
-//                default:
-//                    throw new Exception("Wrong letter");
+        public override void AddGrade(string grade)
+        {
+            if (float.TryParse(grade, out float result)) //parsing string to float
+            {
+                this.AddGrade(result);
+            }
+            else
+            {
+                throw new Exception("string is not float.");
 
+            }
+            throw new Exception("String is not float2");
+        }
 
-//            }
-//        }
+        public override Statistics GetStatistics()
+        {
+            var gradesFromFile = this.ReadGradesFromFile();
+            var result = this.CountStatistics(gradesFromFile);
+            return result;
+        }
 
-//        public override void AddGrade(string grade)
-//        {
-//            if (float.TryParse(grade, out float result)) //parsing string to float
-//            {
-//                this.AddGrade(result);
-//            }
-//            else
-//            {
-//                throw new Exception("string is not float.");
-                
-//            }
-//                throw new Exception("String is not float2");
-//        }
+        private List<float> ReadGradesFromFile()
+        {
+            var grades = new List<float>();
+            if (File.Exists($"{fileName}"))
+            {
+                using (var reader = File.OpenText($"{fileName}")) //using otwiera i zamyka plik automatycznie
+                {
+                    var line = reader.ReadLine();
+                    while (line != null)
+                    {
+                        var number = float.Parse(line);
+                        grades.Add(number); //dodawanie liczby do listy
+                        line = reader.ReadLine(); //czytanie kolejnej linii
 
-//        public override Statistics GetStatistics()
-//        {
-//            var gradesFromFile = this.ReadGradesFromFile();
-//            var result = this.CountStatistics(gradesFromFile);
-//            return result;
-//        }
+                    }
+                }
+            }
+
+            return grades;
+        }
+
+        private Statistics CountStatistics(List<float> grades)
+        {
+            var statistics = new Statistics();
            
-//        private List<float> ReadGradesFromFile()
-//        { 
-//            var grades = new List<float>();
-//            if (File.Exists($"{fileName}"))
-//            {
-//                using (var reader = File.OpenText($"{fileName}")) //using otwiera i zamyka plik automatycznie
-//                {
-//                    var line = reader.ReadLine();
-//                    while (line != null)
-//                    {
-//                        var number = float.Parse(line);
-//                        grades.Add(number); //dodawanie liczby do listy
-//                        line = reader.ReadLine(); //czytanie kolejnej linii
 
-//                    }
-//                }
-//            }
-            
-//            return grades;
-//        }
-//        private Statistics CountStatistics(List<float> grades)
-//        {
-//            var statistics = new Statistics();
-//            statistics.Average = 0;
-//            statistics.Max = float.MinValue;
-//            statistics.Min = float.MaxValue;
-            
-//            foreach (var grade in grades)
-//            {
-//                if (grade >= 0)
-//                {
-//                    statistics.Max = Math.Max(statistics.Max, grade);
-//                    statistics.Min = Math.Min(statistics.Min, grade);
-//                    statistics.Average += grade;
-//                }
-//                statistics.Average /= grades.Count;
-//            }
-//            switch (statistics.Average)
-//            {
-//                case var average when average >= 80:
-//                    statistics.AverageLetter = 'A';
-//                    break;
-//                case var average when average >= 60:
-//                    statistics.AverageLetter = 'B';
-//                    break;
-//                case var average when average >= 40:
-//                    statistics.AverageLetter = 'C';
-//                    break;
-//                case var average when average >= 20:
-//                    statistics.AverageLetter = 'D';
-//                    break;
+            foreach (var grade in grades)
+            {
+                if (grade >= 0)
+                {
+                    statistics.AddGrade(grade);
+                }
                 
-//                default:
-//                    statistics.AverageLetter = 'E';
-//                    break;
-//            }
+            
+            }
 
-//            return statistics;
-//        }
-//    }
-//}
+            return statistics;
+        }
+    }
+}

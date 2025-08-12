@@ -13,7 +13,9 @@ Console.WriteLine("Witamy w progamie do oceny pracowników");
 Console.WriteLine("==========================================");
 
 //var employee = new EmployeeInFile("Jakub", "KowALSKI");
-var employee = new EmployeeInMemory("Jan", "Nowak");
+// var employee = new EmployeeInMemory("Jan", "Nowak");
+
+var employee = new EmployeeInFile("Jan", "Nowak");
 
 employee.GradeAdded += EmpoloyeeGradeAdded; //podpiecie subskrybcji eventu
 
