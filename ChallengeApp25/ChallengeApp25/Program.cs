@@ -11,6 +11,7 @@ using ChallengeApp25;
 
 Console.WriteLine("Witamy w progamie do oceny pracowników");
 Console.WriteLine("==========================================");
+Console.WriteLine();
 
 //var employee = new EmployeeInFile("Jakub", "KowALSKI");
 // var employee = new EmployeeInMemory("Jan", "Nowak");
@@ -70,5 +71,5 @@ while (true)
 var statistics = employee.GetStatistics();
 
 Console.WriteLine($"Average:  { statistics.Average}");
-
 Console.WriteLine($"Max: {statistics.Max} Min: {statistics.Min} Average: {statistics.Average:N2}");
+Console.WriteLine($"Average letter: {statistics.AverageLetter}");
