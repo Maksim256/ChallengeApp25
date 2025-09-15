@@ -12,7 +12,7 @@ namespace ChallengeApp25.Test
         public void WhenAverageForEmployee()
         {
             //arrange
-            var employe = new Employee("Adam", "haslo1");
+            var employe = new EmployeeInFile("Adam", "haslo1");
             employe.AddGrade(5);
             employe.AddGrade(9);
 
@@ -29,7 +29,7 @@ namespace ChallengeApp25.Test
         public void WhenCollectTwoSetOfPoint_ShouldCorrecResultForEmployee()
         {
             //arrange
-            var employee = new Employee("Adam2", "haslo2");
+            var employee = new EmployeeInFile("Adam2", "haslo2");
             // employee.AddGrade(8);
             //  employee.AddGrade(8);
             //act
@@ -44,7 +44,7 @@ namespace ChallengeApp25.Test
         public void WhenGetStatisticsForEmployee_ShouldReturnCorrectMinMaxAverage()
         {
             // Arrange
-            var employee = new Employee("John", "Doe");
+            var employee = new EmployeeInFile("John", "Doe");
             employee.AddGrade(1.5f);
             employee.AddGrade(2);
             employee.AddGrade(6);
@@ -64,7 +64,7 @@ namespace ChallengeApp25.Test
         public void Dodanaocenaliterowasiezgadzazwartosciaami()
         {
             //arrange
-            var employee = new Employee("Jan", "Kowalski");
+            var employee = new EmployeeInFile("Jan", "Kowalski");
             employee.AddGrade('a');
             employee.AddGrade('b');
 
